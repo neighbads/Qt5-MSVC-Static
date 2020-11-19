@@ -1,3 +1,27 @@
+# Appveyor
+
+## build
+
+``` bash
+set arch=x86
+if "%arch%" == "x64" set vcarch=amd64
+call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %arch%
+
+qt download
+qt openssl
+qt setup
+qt build
+
+call tools\options.bat
+7z a qt%QTVER%-msvc2019-%arch%-static.7z %QTINSTALLDIR%
+```
+
+## Artifacts
+
+``` bash
+qt5*.7z
+```
+
 # **Qt5-MSVC-Static**
 
 Set of tools to build Qt5 static libs on Windows.  
